@@ -4,9 +4,9 @@ import Entity.Department;
 import Entity.Property;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-
-import java.util.Set;
+import org.hibernate.query.Query;
 
 public class OneToManyUniSaveApp {
 
@@ -28,18 +28,18 @@ public class OneToManyUniSaveApp {
         int id = 41;
 
         session.beginTransaction();
-   /*     Company company = session.get(Company.class, id);
+        Company company = session.get(Company.class, id);
         System.out.println("Informacje dotyczące firmy" + company);
 
-        Set<Department> departments = company.getDepartments();
+        Department department1 = new Department("sales");
+        Department department2 = new Department("production");
+        Department department3 = new Department("HR");
 
-        for(Department department : departments){
-            System.out.println(department);
-        } */
+        company.addDepartment(department1);
+        company.addDepartment(department2);
+        company.addDepartment(department3);
 
-        Department department = session.get(Department.class,3);
-        System.out.println("Info o department" + department);
-        
+        session.persist(company); //operacje dodawania jest kaskadowalna
 
         session.getTransaction().commit();
 

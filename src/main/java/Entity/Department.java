@@ -4,15 +4,20 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "department")
-public class Department {
+public
+class Department{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_department")
-    private Integer idDepartment;
+    Integer id_department;
 
     @Column(name = "name")
-    private String name;
+    String name;
+
+    @ManyToOne
+    @JoinColumn(name = "id_company")
+    Company company;
 
     public Department() {
     }
@@ -21,12 +26,12 @@ public class Department {
         this.name = name;
     }
 
-    public Integer getIdDepartment() {
-        return idDepartment;
+    public Integer getId_department() {
+        return id_department;
     }
 
-    public void setIdDepartment(Integer idDepartment) {
-        this.idDepartment = idDepartment;
+    public void setId_department(Integer id_department) {
+        this.id_department = id_department;
     }
 
     public String getName() {
@@ -37,12 +42,21 @@ public class Department {
         this.name = name;
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     @Override
     public String toString() {
         return "Department{" +
-                "idDepartment=" + idDepartment +
+                "id_department=" + id_department +
                 ", name='" + name + '\'' +
+                ", company=" + company +
                 '}';
     }
-    
+
 }

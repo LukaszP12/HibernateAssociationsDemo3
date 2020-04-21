@@ -27,7 +27,7 @@ public class Company {
     private CompanyDetail companyDetail;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "company", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) //pole przechpwujące informacje o firmie
-    private List<Property> properties; // lista przechowujące wszystkie properties
+    private List<Property> properties; // lista przechowująca wszystkie properties
 
     public CompanyDetail getCompanyDetail() {
         return companyDetail;
